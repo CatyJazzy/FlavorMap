@@ -1,5 +1,18 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { Restaurant, RestaurantFilters } from '../types';
+import restaurantsData from '../data/restaurants.json';
+
+// 배열을 랜덤하게 섞는 함수
+function shuffleArray<T>(array: T[]): T[] {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    // 0부터 i까지의 랜덤한 인덱스 생성
+    const j = Math.floor(Math.random() * (i + 1));
+    // 랜덤한 위치의 요소와 현재 위치의 요소를 교환
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -27,11 +40,6 @@ export function useFavorites() {
   return { favorites, toggleFavorite, isFavorite };
 }
 
-// src/hooks/use-restaurants.ts
-import { useState, useMemo } from 'react';
-import { Restaurant, RestaurantFilters } from '../types';
-import restaurantsData from '../data/restaurants.json';
-
 export function useRestaurants() {
   const [filters, setFilters] = useState<RestaurantFilters>({
     searchTerm: '',
@@ -41,9 +49,12 @@ export function useRestaurants() {
     minRating: 0
   });
 
+  // 모든 레스토랑 데이터를 가져오고 랜덤하게 섞기
+  // 페이지가 로드/새로고침될 때마다 자동으로 섞임
   const allRestaurants = useMemo<Restaurant[]>(() => {
-    return restaurantsData as Restaurant[];
-  }, []);
+    const data = restaurantsData as Restaurant[];
+    return shuffleArray(data); // 랜덤하게 섞은 데이터 반환
+  }, []); // 빈 의존성 배열로 처음 마운트될 때만 섞음
 
   const filteredRestaurants = useMemo(() => {
     return allRestaurants.filter(restaurant => {
@@ -51,7 +62,8 @@ export function useRestaurants() {
       if (filters.searchTerm && !restaurant.name.toLowerCase().includes(filters.searchTerm.toLowerCase()) &&
           !restaurant.cuisine.toLowerCase().includes(filters.searchTerm.toLowerCase()) &&
           !restaurant.mainDish.toLowerCase().includes(filters.searchTerm.toLowerCase()) &&
-          !restaurant.location.toLowerCase().includes(filters.searchTerm.toLowerCase())) {
+          !restaurant.location.toLowerCase().includes(filters.searchTerm.toLowerCase()) &&
+          !restaurant.tags.some(tag => tag.toLowerCase().includes(filters.searchTerm.toLowerCase()))) {
         return false;
       }
 
