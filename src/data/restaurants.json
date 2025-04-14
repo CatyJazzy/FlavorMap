@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "하루 Korean BBQ",
+    "name": "Seoul-Ria",
     "cuisine": "한식",
     "mainDish": "삼겹살 & 불고기",
     "location": "CBD",
@@ -10,8 +10,8 @@
     "rating": 4.6,
     "imageUrl": "https://images.unsplash.com/photo-1632558610168-8713eabd621e?auto=format&fit=crop&q=80&w=500",
     "reservationLink": "https://www.opentable.com",
-    "websiteLink": "https://www.haru-korean-bbq.com",
-    "description": "정통 한국식 바비큐를 시드니 중심부에서 즐길 수 있는 곳입니다. 고품질 고기와 다양한 반찬이 특징입니다.",
+    "websiteLink": "https://www.tripadvisor.com.au/Restaurant_Review-g255060-d778340-Reviews-Seoul_Ria-Sydney_New_South_Wales.html",
+    "description": "한국식 바비큐와 아시아 퓨전요리를 시드니 중심부에서 즐길 수 있는 곳입니다. 고품질 고기와 다양한 반찬이 특징입니다.",
     "tags": ["한식", "바비큐", "고기", "가족식사"]
   },
   {
