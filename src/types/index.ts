@@ -1,4 +1,3 @@
-// src/types/index.ts
 export type PriceRange = '$' | '$$' | '$$$' | '$$$$';
 
 export type Cuisine = 
@@ -17,6 +16,24 @@ export type Cuisine =
   | '해산물'
   | '스테이크'
   | '베이커리'
+  | '햄버거'
+  | '채식'
+  | '말레이시안'
+  | '바비큐'
+  | '아시안'
+  | '지중해식'
+  | '모던 오스트레일리안'
+  | '레바논'
+  | '터키'
+  | '스위스'
+  | '스페인'
+  | '브라질리안'
+  | '중동'
+  | '스칸디나비안'
+  | '아르헨티나'
+  | '인도네시안'
+  | '스코티시'
+  | '오스트레일리안'
   | '기타';
 
 export type Location = 
@@ -29,7 +46,14 @@ export type Location =
   | 'Bondi' 
   | 'Manly'
   | 'Parramatta'
-  | 'Chatswood';
+  | 'Chatswood'
+  | 'Kings Cross'
+  | 'Chippendale'
+  | 'Leichhardt'
+  | 'Strathfield'
+  | 'Cabramatta'
+  | 'Woolloomooloo'
+  | 'Chinatown';
 
 export interface Restaurant {
   id: string;

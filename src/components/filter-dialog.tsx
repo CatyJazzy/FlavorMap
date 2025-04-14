@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Cuisine, Location, PriceRange, RestaurantFilters } from '../types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { ScrollArea } from './ui/scroll-area';
 
 interface FilterDialogProps {
   isOpen: boolean;
@@ -43,19 +44,25 @@ export function FilterDialog({ isOpen, onClose, currentFilters, onApplyFilters }
   const cuisineOptions: Cuisine[] = [
     '한식', '일식', '중식', '태국', '이탈리안', 
     '프렌치', '그리스', '멕시칸', '인도', '베트남',
-    '카페', '브런치', '해산물', '스테이크', '베이커리', '기타'
+    '카페', '브런치', '해산물', '스테이크', '베이커리',
+    '햄버거', '채식', '말레이시안', '바비큐', '아시안',
+    '지중해식', '모던 오스트레일리안', '레바논', '터키',
+    '스위스', '스페인', '브라질리안', '중동', '스칸디나비안',
+    '아르헨티나', '인도네시안', '스코티시', '오스트레일리안', '기타'
   ];
 
   const locationOptions: Location[] = [
     'CBD', 'Darling Harbour', 'Circular Quay', 'The Rocks', 
-    'Surry Hills', 'Newtown', 'Bondi', 'Manly', 'Parramatta', 'Chatswood'
+    'Surry Hills', 'Newtown', 'Bondi', 'Manly', 'Parramatta', 
+    'Chatswood', 'Kings Cross', 'Chippendale', 'Leichhardt',
+    'Strathfield', 'Cabramatta', 'Woolloomooloo', 'Chinatown'
   ];
 
   const priceOptions: PriceRange[] = ['$', '$$', '$$$', '$$$$'];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] max-h-[85vh]">
         <DialogHeader>
           <DialogTitle>필터 설정</DialogTitle>
         </DialogHeader>
@@ -68,33 +75,37 @@ export function FilterDialog({ isOpen, onClose, currentFilters, onApplyFilters }
           </TabsList>
 
           <TabsContent value="cuisine" className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              {cuisineOptions.map((cuisine) => (
-                <Button
-                  key={cuisine}
-                  variant={filters.cuisine === cuisine ? "default" : "outline"}
-                  onClick={() => setFilters({...filters, cuisine: filters.cuisine === cuisine ? '' : cuisine})}
-                  className="text-sm"
-                >
-                  {cuisine}
-                </Button>
-              ))}
-            </div>
+            <ScrollArea className="h-60 pr-4">
+              <div className="flex flex-wrap gap-2">
+                {cuisineOptions.map((cuisine) => (
+                  <Button
+                    key={cuisine}
+                    variant={filters.cuisine === cuisine ? "default" : "outline"}
+                    onClick={() => setFilters({...filters, cuisine: filters.cuisine === cuisine ? '' : cuisine})}
+                    className="text-sm mb-2"
+                  >
+                    {cuisine}
+                  </Button>
+                ))}
+              </div>
+            </ScrollArea>
           </TabsContent>
 
           <TabsContent value="location" className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              {locationOptions.map((location) => (
-                <Button
-                  key={location}
-                  variant={filters.location === location ? "default" : "outline"}
-                  onClick={() => setFilters({...filters, location: filters.location === location ? '' : location})}
-                  className="text-sm"
-                >
-                  {location}
-                </Button>
-              ))}
-            </div>
+            <ScrollArea className="h-60 pr-4">
+              <div className="flex flex-wrap gap-2">
+                {locationOptions.map((location) => (
+                  <Button
+                    key={location}
+                    variant={filters.location === location ? "default" : "outline"}
+                    onClick={() => setFilters({...filters, location: filters.location === location ? '' : location})}
+                    className="text-sm mb-2"
+                  >
+                    {location}
+                  </Button>
+                ))}
+              </div>
+            </ScrollArea>
           </TabsContent>
 
           <TabsContent value="price" className="space-y-4">
