@@ -53,7 +53,11 @@ export type Location =
   | 'Strathfield'
   | 'Cabramatta'
   | 'Woolloomooloo'
-  | 'Chinatown';
+  | 'Chinatown'
+  | 'Balgowlah'
+  | 'Barangaroo'
+  | 'Penrith'
+  | 'Crows Nest';
 
 export interface Restaurant {
   id: string;

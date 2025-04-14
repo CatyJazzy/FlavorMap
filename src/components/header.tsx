@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, Heart } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -6,6 +6,17 @@ export function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname);
+
+  // location 변경 시 activeTab 업데이트
+  useEffect(() => {
+    const path = location.pathname;
+    // 경로가 /details/로 시작하면 홈으로 간주
+    if (path.startsWith('/details/')) {
+      setActiveTab('/');
+    } else {
+      setActiveTab(path);
+    }
+  }, [location.pathname]);
 
   const handleTabChange = (path: string) => {
     setActiveTab(path);
