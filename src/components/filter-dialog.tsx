@@ -29,7 +29,7 @@ export function FilterDialog({ isOpen, onClose, currentFilters, onApplyFilters }
 
   // 필터 초기화 핸들러
   const handleResetFilters = () => {
-    const resetFilters = {
+    const resetFilters: RestaurantFilters = {
       searchTerm: filters.searchTerm, // 검색어는 유지
       cuisine: '',
       location: '',
