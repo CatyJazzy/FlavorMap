@@ -1444,5 +1444,20 @@
     "websiteLink": "https://www.aussiepie.com.au",
     "description": "호주 전통 미트 파이와 소시지 롤을 전문으로 하는 가게. 호주의 대표적인 길거리 음식을 현대적으로 재해석한 다양한 파이를 제공합니다.",
     "tags": ["오스트레일리안", "파이", "소시지롤", "캐주얼"]
+  },
+  {
+    "id": "101",
+    "name": "Jihoo Moon",
+    "cuisine": "한식",
+    "mainDish": "지후",
+    "location": "Newtown",
+    "address": "Jung-gu Seoul, Korea",
+    "priceRange": "$$$$",
+    "rating": 5,
+    "imageUrl": "https://i.pinimg.com/236x/f3/dc/25/f3dc2527f134cd3f482bbb78d8ec8165.jpg",
+    "reservationLink": "https://www.instagram.com/jh_ct21",
+    "websiteLink": "https://www.instagram.com/jh_ct21",
+    "description": "다양한 귀여움과 매력을 즐길 수 있는 한식입니다.",
+    "tags": ["데이트", "트렌디", "스페셜"]
   }
 ]

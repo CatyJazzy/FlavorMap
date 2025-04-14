@@ -139,7 +139,7 @@ export function HomePage() {
   );
 
   function handleResetFilters() {
-    const resetFilters = {
+    const resetFilters: RestaurantFilters = {
       searchTerm: '',
       cuisine: '',
       location: '',
